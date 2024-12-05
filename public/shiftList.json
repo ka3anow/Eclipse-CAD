@@ -1,0 +1,51 @@
+[
+    {
+        "license": true,
+        "name": "Jessie",
+        "surname": "Pinkman",
+        "age": 30,
+        "id": 90,
+        "gender": true,
+        "phone": "555-5561",
+        "balance": 500,
+        "status": 0,
+        "police": {
+            "rank": 4,
+            "onDuty": 0,
+            "callsign": "L-01",
+            "onPanic": false
+        }
+    },{
+        "license": true,
+        "name": "Boris",
+        "surname": "Newman",
+        "age": 50,
+        "id": 76,
+        "gender": true,
+        "phone": "555-1521",
+        "balance": 500,
+        "status": 1,
+        "police": {
+            "rank": 13,
+            "onDuty": 1,
+            "callsign": "L-02",
+            "onPanic": false
+        }
+    },{
+        "license": true,
+        "name": "Aaron",
+        "surname": "Johnson",
+        "age": 36,
+        "id": 64,
+        "gender": true,
+        "phone": "555-8771",
+        "balance": 244,
+        "status": 1,
+        "police": {
+            "rank": 7,
+            "onDuty": 2,
+            "callsign": "K-02",
+            "onPanic": false
+        }
+    }
+]

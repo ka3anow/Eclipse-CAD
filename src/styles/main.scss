@@ -1,0 +1,1181 @@
+$police-gradient-a: #182a42;
+$police-gradient-b: #0a1729;
+$gradient: linear-gradient(320deg, $police-gradient-a, $police-gradient-b);
+$body-font-family: 'Jost', serif !important;
+$radius: 13px;
+$shadowBlack: 0 5px 12px 0 #00000088;
+$textShadowBlack: 0 5px 12px #000000c0;
+$black: #000000c0;
+$white: #ffffff40;
+
+html {
+    overflow: hidden;
+}
+
+body {
+    background: transparent;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
+}
+
+.v-main {
+    background-color: transparent;
+    font-family: $body-font-family;
+}
+
+.pad {
+    background-image: url('/images/ipad.png');
+    background-size: contain;
+    width: 1175px;
+    height: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 32px 35px 37px 32px;
+    display: flex;
+
+    .pad_inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: $radius;
+        background: $gradient;
+        overflow: hidden;
+
+        .logo {
+            background-image: url('/images/logo.png');
+            background-size: contain;
+            width: 256px;
+            height: 245px;
+            margin-bottom: 30px;
+        }
+
+        .page {
+            background: $gradient;
+            border-radius: $radius;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            header {
+                height: 84px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 20px;
+                background: linear-gradient(145deg, $police-gradient-a 0, $police-gradient-b 100%);
+
+                .logo {
+                    height: 64px;
+                    width: 64px;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            .content {
+                height: 746px;
+                display: flex;
+            }
+
+            .left-block {
+                width: 300px;
+                background-color: rgb(var(--v-theme-blueC));
+                height: 100%;
+
+                .player-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                    padding: 20px 30px 10px;
+
+                    .status {
+                        position: absolute;
+                        left: 15px;
+                        top: 36px;
+                        background-color: #eee;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background-color: var(--dutyColor);
+                        box-shadow: 0 0 10px var(--dutyColor);
+
+                        &.duty_0 {
+                            --dutyColor: rgb(var(--v-theme-success));
+                        }
+
+                        &.duty_1 {
+                            --dutyColor: rgb(var(--v-theme-info));
+                        }
+
+                        &.duty_2 {
+                            --dutyColor: rgb(var(--v-theme-warning));
+                        }
+
+                        &.duty_3 {
+                            --dutyColor: rgb(var(--v-theme-error));
+                        }
+                    }
+
+                    h5 {
+                        font-size: 1.75rem;
+                        font-weight: 500;
+                        line-height: 1.25;
+                        margin-bottom: 0.5rem;
+                        text-align: center;
+                    }
+
+                    h6 {
+                        color: rgb(var(--v-theme-secondary));
+                        padding: 0;
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+
+                }
+
+                .list {
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    .v-btn:not(.active) {
+                        box-shadow: none !important;
+                    }
+
+                    .v-btn.active {
+                        background-color: rgb(var(--v-theme-primary));
+                    }
+                }
+
+                .panic-block {
+                    position: absolute;
+                    bottom: 0;
+                    width: 300px;
+                    padding: 10px;
+
+                    .duty-block {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+                        gap: 10px;
+
+                        .v-btn {
+                            background: transparent;
+                            flex: 1;
+                            height: 16px;
+                            opacity: 0.4;
+
+                            &.active {
+                                opacity: 1;
+                            }
+                        }
+
+                        .duty_0 {
+                            background-color: rgb(var(--v-theme-success));
+                        }
+
+                        .duty_1 {
+                            background-color: rgb(var(--v-theme-info));
+                        }
+
+                        .duty_2 {
+                            background-color: rgb(var(--v-theme-warning));
+                        }
+
+                        .duty_3 {
+                            background-color: rgb(var(--v-theme-error));
+                        }
+
+                    }
+
+                    .panic {
+                        display: flex;
+                        flex: 1 0 auto;
+                        align-items: center;
+                        justify-content: center;
+                        min-width: 100%;
+                        height: calc(var(--v-btn-height) + 0px);
+                        border-color: rgba(var(--v-border-color), var(--v-border-opacity));
+                        border-style: solid;
+                        border-width: 0;
+                        border-radius: 4px;
+                        padding: .5rem 3rem;
+                        font-size: var(--v-btn-size);
+                        font-weight: 500;
+                        line-height: normal;
+                        background-color: rgba(var(--v-theme-secondary));
+                        color: rgb(var(--v-theme-primary));
+
+                        &.active {
+                            animation: police-blinking 2s infinite;
+                            color: #fff;
+                            font-weight: 500;
+                        }
+                    }
+
+                }
+
+            }
+            .right-block {
+                width: calc(100% - 300px);
+                height: 100%;
+                position: relative;
+
+                .subpage {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    overflow-y: scroll;
+                    padding: 20px;
+
+                    .search {
+                        width: 47%;
+                    }
+
+                    .description {
+                        display: flex;
+                        justify-content: space-between;
+                        color: rgb(var(--v-theme-secondary));
+                        margin: 0 20px;
+
+                        .id {
+                            width: 10%;
+                        }
+                        .name {
+                            width: 50%;
+                        }
+                        .phone {
+                            width: 15%;
+                        }
+                        .age {
+                            width: 10%;
+                        }
+                        .status {
+                            width: 15%;
+                        }
+
+                        &.vehicle {
+                            .id {
+                                width: 10%;
+                            }
+                            .name {
+                                width: 35%;
+                            }
+                            .plate {
+                                width: 10%;
+                            }
+                            .owner {
+                                width: 25%;
+                            }
+                            .status {
+                                width: 15%;
+                            }
+                        }
+
+                        &.laws {
+                            margin: 0;
+
+                            .numb {
+                                width: 10%;
+                            }
+                            .name {
+                                width: 60%;
+                            }
+                            .period {
+                                width: 15%;
+                            }
+                            .penalty {
+                                width: 15%;
+                            }
+                        }
+                        &.weapon {
+                            margin: 0 20px;
+
+                            .id {
+                                width: 10%;
+                            }
+                            .owner {
+                                width: 30%;
+                            }
+                            .name {
+                                width: 25%;
+                            }
+                            .serial {
+                                width: 20%;
+                            }
+                            .status {
+                                width: 15%;
+                            }
+                        }
+                    }
+
+
+                    .list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+        
+                        .item-list {
+                            background-color: rgb(var(--v-theme-primary));
+                            padding: 20px 20px;
+                            transition: all .3s ease;
+                            border-radius: 6px;
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 1rem;
+                            box-shadow: $shadowBlack;
+                            white-space: nowrap;
+                            position: relative;
+
+                            &:hover {
+                                cursor: pointer;
+                                color: rgb(var(--v-theme-primary));
+                                background-color: rgb(var(--v-theme-secondary));
+                                transform: scaleX(102%);
+                            }
+                            &:before {
+                                content: "";
+                                display: block;
+                                height: 100%;
+                                width: 10px;
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                border-radius: 6px 0 0 6px;
+                            }
+                            &.status_0 {
+                                opacity: 0.5;
+                            }
+                            &.status_2 {
+                                &:before {
+                                    background-color: rgb(var(--v-theme-error))
+                                }
+                                .status {
+                                    color: rgb(var(--v-theme-error))
+                                }
+                            }
+                            &.status_3 {
+                                .status {
+                                    color: rgb(var(--v-theme-active))
+                                }
+                            }
+                            &.status_4 {
+                                .status {
+                                    color: $black;
+                                }
+                            }
+                            &.status_5 {
+                                .status {
+                                    color: rgb(var(--v-theme-secondary))
+                                }
+                            }
+
+                            .id {
+                                width: 10%;
+                                overflow: hidden;
+                            }
+                            .name {
+                                width: 50%;
+                            }
+                            .phone {
+                                width: 15%;
+                            }
+                            .age {
+                                width: 10%;
+                            }
+                            .status {
+                                width: 15%;
+                            }
+                        }
+
+                        &.vehicle {
+                            .item-list {
+                                .id {
+                                    width: 10%;
+                                }
+                                .name {
+                                    width: 35%;
+                                }
+                                .plate {
+                                    width: 10%;
+                                }
+                                .owner {
+                                    width: 25%;
+                                }
+                                .status {
+                                    width: 15%;
+                                }
+                                &.status_4 {
+                                    &:before {
+                                        background-color: rgb(var(--v-theme-warning))
+                                    }
+                                    .status {
+                                        color: rgb(var(--v-theme-warning))
+                                    }
+                                }
+                            }
+                           
+                        }
+
+                        &.weapon {
+                            display: flex;
+
+                            .id {
+                                width: 10%;
+                            }
+                            .owner {
+                                width: 30%;
+                            }
+                            .name {
+                                width: 25%;
+                            }
+                            .serial {
+                                width: 20%;
+                            }
+                            .status {
+                                width: 15%;
+                            }
+                            .status_4 {
+                                .status {
+                                    color: rgb(var(--v-theme-warning));
+                                }
+                                &:before {
+                                    background-color: rgb(var(--v-theme-warning));
+                                }
+                            }
+                            .error {
+                                color: rgb(var(--v-theme-error));
+                            }
+                        }
+
+                        .item-list-code {
+                            display: flex;
+
+                            .numb {
+                                width: 10%;
+                            }
+                            .name {
+                                width: 60%;
+                            }
+                            .period {
+                                width: 15%;
+                            }
+                            .penalty {
+                                width: 15%;
+                            }
+                        }
+                    }
+
+                    .citizen-card {
+                        position: relative;
+
+                        .status_2 {
+                            color: rgb(var(--v-theme-error))
+                        }
+                        .status_3 {
+                            color: rgb(var(--v-theme-active))
+                        }
+                        .status_4 {
+                            color: $black;
+                        }
+                        .status_5 {
+                            color: rgb(var(--v-theme-error))
+                        }
+                        .status_6 {
+                            color: rgb(var(--v-theme-secondary))
+                        }
+                        .license_false {
+                            color: rgb(var(--v-theme-error))
+                        }
+                        .v-card {
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 6px;
+                            }
+                            .select-status {
+                                width: 40%;
+                            }
+                        }
+                        .v-card.status0 {
+                            &::before {
+                                background-color: $white;
+                            }
+                        }
+                        .v-card.status2 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-error));
+                            }
+                        }
+                        .v-card.status3 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-active));
+                            }
+                        }
+                        .v-card.status4 {
+                            &::before {
+                                background-color: $black;
+                            }
+                        }
+                        .v-card.status5 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-secondary));
+                            }
+                        }
+                        .sex {
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    .vehicle-card {  
+                        position: relative;
+
+                        .status_2 {
+                            color: rgb(var(--v-theme-error))
+                        }
+                        .status_3 {
+                            color: rgb(var(--v-theme-active))
+                        }
+                        .status_4 {
+                            color: $black;
+                        }
+                        .status_5 {
+                            color: rgb(var(--v-theme-secondary))
+                        }
+                        .license_false {
+                            color: rgb(var(--v-theme-error))
+                        }
+                        .v-card {
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 6px;
+                            }
+                        }
+                        .v-card.status0 {
+                            &::before {
+                                background-color: $white;
+                            }
+                        }
+                        .v-card.status2 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-error));
+                            }
+                        }
+                        .v-card.status3 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-active));
+                            }
+                        }
+                        .v-card.status4 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-warning));
+                            }
+                        }
+                        .v-card.status5 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-secondary));
+                            }
+                        }
+
+                        .active {
+                            cursor: pointer;
+                            color: rgb(var(--v-theme-active));
+                            transition: ease all 0.5s;
+
+                            &:hover {
+                                color: rgb(var(--v-theme-secondary));
+                                
+                            }
+                        }
+                        .veh-color {
+                            display: block;
+                            width: 62.5px;
+                            border-radius: 6px;
+                            box-sizing: $shadowBlack;
+                            margin: 4px 0;
+                        }
+                        .select-status {
+                            width: 40%;
+                        }
+                    }
+                    .weapon-card {
+                        position: relative;
+
+                        .v-card {
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 6px;
+                            }
+                        }
+                        .v-card.status0 {
+                            &::before {
+                                background-color: $white;
+                            }
+                        }
+                        .v-card.status2 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-error));
+                            }
+                        }
+                        .v-card.status3 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-active));
+                            }
+                        }
+                        .v-card.status4 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-warning));
+                            }
+                        }
+                        .v-card.status5 {
+                            &::before {
+                                background-color: rgb(var(--v-theme-secondary));
+                            }
+                        }
+                        .active {
+                            cursor: pointer;
+                            color: rgb(var(--v-theme-active));
+                            transition: ease all 0.3s;
+
+                            &:hover {
+                                color: rgb(var(--v-theme-secondary));
+                                
+                            }
+                        }
+                        .error {
+                            color: rgb(var(--v-theme-error));
+                        }
+                        .select-status {
+                            width: 40%;
+                        }
+                        
+                    }
+
+                    &.citizen .vehicle  {
+                        .id {
+                            width: 10%;
+                        }
+                        .name {
+                            width: 40%;
+                        }
+                        .plate {
+                            width: 10%;
+                        }
+                        .seller {
+                            width: 25%;
+                        }
+                        .status {
+                            width: 15%; 
+                        }
+                    }
+
+                    &.citizen .weapons  {
+                        .id {
+                            width: 10%;
+                        }
+                        .name {
+                            width: 30%;
+                        }
+                        .serial {
+                            width: 20%;
+                        }
+                        .seller {
+                            width: 25%;
+                        }
+                        .status {
+                            width: 15%; 
+                        }
+                    }
+                }
+                
+                .main-card {
+                    padding: 20px;
+                    margin-bottom: 20px;
+
+                    .shift-list {
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        .shift-item {
+                            flex-basis: 50%;
+                            box-sizing: border-box;
+                            position: relative;
+                            margin-bottom: 5px;
+                            display: flex;
+                            align-items: center;
+
+                            &:last-child,
+                            &:nth-last-child(2) {
+                                margin-bottom: 0;
+                            }
+                            
+
+                            span {
+                                &.text {
+                                    margin-left: 15px;
+                                }
+
+                                &.icon {
+                                    width: 20px;
+                                    height: 20px;
+                                    margin-left: 5px;
+                                }
+                                &.rank-3 {
+                                    background-image: url('/ranks/03.png');
+                                }
+                                &.rank-4 {
+                                    background-image: url('/ranks/04.png');
+                                }
+                                &.rank-5 {
+                                    background-image: url('/ranks/05.png');
+                                }
+                                &.rank-6 {
+                                    background-image: url('/ranks/06.png');
+                                }
+                                &.rank-7 {
+                                    background-image: url('/ranks/07.png');
+                                }
+                                &.rank-8 {
+                                    background-image: url('/ranks/08.png');
+                                }
+                                &.rank-9 {
+                                    background-image: url('/ranks/09.png');
+                                }
+                                &.rank-10 {
+                                    background-image: url('/ranks/10.png');
+                                }
+                                &.rank-11 {
+                                    background-image: url('/ranks/11.png');
+                                }
+                                &.rank-12 {
+                                    background-image: url('/ranks/12.png');
+                                }
+                                &.rank-13 {
+                                    background-image: url('/ranks/13.png');
+                                }
+                                &.rank-14 {
+                                    background-image: url('/ranks/14.png');
+                                }
+                                &.rank-15 {
+                                    background-image: url('/ranks/15.png');
+                                }
+
+                                &.onduty {
+                                    width: 6px;
+                                    height: 6px;
+                                    border-radius: 50%;
+                                    background-color: var(--dutyColor);
+                                    box-shadow: 0 0 10px var(--dutyColor);
+
+                                    &.duty_0 {
+                                        --dutyColor: rgb(var(--v-theme-success));
+                                    }
+            
+                                    &.duty_1 {
+                                        --dutyColor: rgb(var(--v-theme-info));
+                                    }
+            
+                                    &.duty_2 {
+                                        --dutyColor: rgb(var(--v-theme-warning));
+                                    }
+            
+                                    &.duty_3 {
+                                        --dutyColor: rgb(var(--v-theme-error));
+                                    }
+                                    &.panic {
+                                        --dutyColor: rgb(var(--v-theme-error));
+                                        animation: police-blinking 2s infinite;
+                                    }
+                                }
+
+                               
+                            }
+                        }
+                    }
+
+                    .active {
+                        cursor: pointer;
+                        color: rgb(var(--v-theme-active));
+                        transition: ease all 0.5s;
+
+                        &:hover {
+                            color: rgb(var(--v-theme-secondary));
+                            
+                        }
+                    }
+
+                    .adam-list {
+                        display: flex;
+                        align-items: center;
+
+                        .member {
+                            &:before {
+                                content: ",";
+                            }
+                            &:first-child {
+                                &:before {
+                                    content: "";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .mainpage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .enter {
+                margin: 40px;
+                line-height: 1.5rem;
+                font-size: 1.75rem;
+                padding: 1.5rem 4rem;
+                height: auto;
+            }
+        }
+    }
+
+    .text-h1,
+    .text-h2,
+    .text-h3,
+    .text-h4,
+    .text-h5 {
+        font-family: $body-font-family;
+    }
+
+}
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $black;
+
+    .modal-content {
+        background-color: rgb(var(--v-theme-primary));
+        border-radius: 5px;
+        box-shadow: $shadowBlack;
+        min-width: 400px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+    }
+}
+
+.shadow {
+    text-shadow: $textShadowBlack;
+}
+
+.v-text-field .v-field {
+    color: rgb(var(--v-theme-secondary))
+}
+
+.duty_tooltip_0.v-tooltip>.v-overlay__content {
+    background: rgb(var(--v-theme-success));
+    color: rgb(var(--v-theme-blueC));
+    font-weight: 600;
+}
+
+.duty_tooltip_1.v-tooltip>.v-overlay__content {
+    background: rgb(var(--v-theme-info));
+    color: rgb(var(--v-theme-blueC));
+    font-weight: 600;
+}
+
+.duty_tooltip_2.v-tooltip>.v-overlay__content {
+    background: rgb(var(--v-theme-warning));
+    color: rgb(var(--v-theme-blueC));
+    font-weight: 600;
+}
+
+.duty_tooltip_3.v-tooltip>.v-overlay__content {
+    background: rgb(var(--v-theme-error));
+    color: rgb(var(--v-theme-blueC));
+    font-weight: 600;
+}
+
+.v-list-item--density-default.v-list-item--one-line {
+    min-height: 38px !important;
+}
+.v-list-item.citizen-color-0 .v-list-item-title {
+    color: $white;
+}
+.v-list-item.citizen-color-2 .v-list-item-title {
+    color: rgb(var(--v-theme-error));
+}
+.v-list-item.citizen-color-3 .v-list-item-title {
+    color: rgb(var(--v-theme-active));
+}
+.v-list-item.citizen-color-4 .v-list-item-title {
+    color: $black;
+    font-weight: 600;
+}
+.v-list-item.citizen-color-5 .v-list-item-title {
+    color: rgb(var(--v-theme-secondary));
+}
+
+.v-list-item.weapon-color-0 .v-list-item-title {
+    color: $white;
+}
+.v-list-item.weapon-color-2 .v-list-item-title {
+    color: rgb(var(--v-theme-error));
+}
+.v-list-item.weapon-color-3 .v-list-item-title {
+    color: rgb(var(--v-theme-active));
+}
+.v-list-item.weapon-color-4 .v-list-item-title {
+    color: rgb(var(--v-theme-warning));
+}
+.v-list-item.citizen-color-5 .v-list-item-title {
+    color: rgb(var(--v-theme-secondary));
+}
+
+.v-list-item.vehicle-color-0 .v-list-item-title {
+    color: $white;
+}
+.v-list-item.vehicle-color-2 .v-list-item-title {
+    color: rgb(var(--v-theme-error));
+}
+.v-list-item.vehicle-color-3 .v-list-item-title {
+    color: rgb(var(--v-theme-active));
+}
+.v-list-item.vehicle-color-4 .v-list-item-title {
+    color: rgb(var(--v-theme-warning));
+}
+.v-list-item.vehicle-color-5 .v-list-item-title {
+    color: rgb(var(--v-theme-secondary));
+}
+
+.v-img {
+    display: flex;
+
+    .v-img__img {
+        object-fit: contain;
+    }
+}
+
+// SCROLL
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(var(--v-theme-blueA));
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(var(--v-theme-secondary));
+    border-radius: 2px;
+}
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+.slide-fade-enter-active {
+    transition: all 0.3s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.transition_01-enter-active {
+    transition: all 0.3s ease;
+}
+
+.transition_01-leave-active {
+    transition: all 0.5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+
+.transition_01-enter,
+.transition_01-leave-to {
+    transform: scale(1.1);
+    opacity: 0;
+}
+
+.transition_02-enter-active {
+    transition: all 0.3s ease;
+}
+
+.transition_02-leave-active {
+    transition: all 0.8s ease;
+}
+
+.transition_02-enter,
+.transition_02-leave-to {
+    transform: scale(1);
+    opacity: 0;
+}
+
+.slide-to-left-enter-active {
+    transition: all 0.3s ease;
+}
+
+.slide-to-left-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-to-left-enter,
+.slide-to-left-leave-to {
+    transform: translateX(-10px);
+    opacity: 0;
+}
+
+.slide-to-right-enter-active {
+    transition: all 0.3s ease;
+}
+
+.slide-to-right-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-to-right-enter,
+.slide-to-right-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.fast-enter-active {
+    transition: all 0.25s ease;
+}
+
+.fast-leave-active {
+    transition: all 0s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.fast-enter,
+.fast-leave-to {
+    transform: translateX(5px);
+    opacity: 0;
+}
+
+.unlock-enter-active {
+    transition: all 0.5s ease;
+}
+
+.unlock-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.unlock-enter,
+.unlock-leave-to {
+    transform: scale(1.3);
+    opacity: 0;
+}
+
+.transition_03-enter-active {
+    transition: all 0.5s ease;
+}
+
+.transition_03-leave-active {
+    transition: all 0.5s ease;
+}
+
+.transition_03-enter,
+.transition_03-leave-to {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.3s;
+    opacity: 1;
+}
+
+.list-enter,
+.list-leave-to {
+    opacity: 0;
+}
+
+.list-enter,
+.list-leave-to {
+    opacity: 0;
+}
+
+.pad-enter-active,
+.pad-leave-active {
+    transition: all 1.5s ease-out;
+    transform: rotateX(0deg) translateZ(0px);
+    opacity: 1;
+}
+
+.pad-enter,
+.pad-leave-to {
+    transform: rotateX(93deg) translateZ(-300px);
+    opacity: 0;
+}
+
+@keyframes police-blinking {
+    0% {
+        background-color: rgb(var(--v-theme-error));
+        box-shadow: 0 0 8px 3px rgb(var(--v-theme-error));
+    }
+
+    50% {
+        background-color: rgb(var(--v-theme-primary));
+        box-shadow: 0 0 8px 3px rgb(var(--v-theme-primary));
+    }
+
+    100% {
+        background-color: rgb(var(--v-theme-error));
+        box-shadow: 0 0 8px 3px rgb(var(--v-theme-error));
+    }
+}

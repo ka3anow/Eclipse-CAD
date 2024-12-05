@@ -1,0 +1,37 @@
+{
+    "results": [
+        {
+            "name": "Combat Pistol",
+            "serial": "",
+            "id": 0,
+            "owner": 0,
+            "seller": -1,
+            "status": 1,
+            "image": "/weapons/pistols/CombatPistol.png"
+        },{
+            "name": "Special Carbine",
+            "serial": "ZMFRN07IFP",
+            "id": 1,
+            "owner": 0,
+            "seller": 4,
+            "status": 2,
+            "image": "/weapons/assaultrifles/Special_Carbine.png"
+        },{
+            "name": "Heavy Sniper MK II",
+            "serial": "MM30UAXNSR",
+            "id": 2,
+            "owner": 1,
+            "seller": 5,
+            "status": 3,
+            "image": "/weapons/sniperrifles/HeavySniperMKII.png"
+        },{
+            "name": "Combat MG",
+            "serial": "MAJXPMF4WU",
+            "id": 3,
+            "owner": 2,
+            "seller": 6,
+            "status": 4,
+            "image": "/weapons/lmgs/CombatMG.png"
+        }
+    ]
+}

@@ -1,0 +1,218 @@
+{
+    "cadName": "San-Andreas CAD",
+    "cadSlogan": "To protect and to serve",
+    "cadDescription": "Computer-Aided Dispatching",
+    "loading": "Loading",
+    "buttonEnter": "Enter",
+    "buttonExit": "Exit",
+    "buttonNotSelected": "Not selected",
+    "buttonLeave": "Leave",
+    "buttonBack": "Back",
+
+    "buttonA": "Main Panel",
+    "buttonB": "Police Calls",
+    "buttonC": "Resident base",
+    "buttonD": "Car database",
+    "buttonE": "Registered weapons",
+    "buttonF": "State Laws",
+    "buttonG": "10-codes",
+    "buttonH": "Management",
+    "buttonPanic": "PANIC",
+    "buttonOndutyA": "On duty",
+    "buttonOndutyB": "On call",
+    "buttonOndutyC": "Busy",
+    "buttonOndutyD": "Off-shift",
+
+    "pageAShiftWorkers": "Shift workers",
+    "pageAPatrolOfficers": "Patrol officers",
+    "pageAWanted": "Wanted persons",
+    "pageAWantedVehicle": "Wanted vehicles",
+    "textRankNotFound": "Rank not found",
+    "textJoin": "Join",
+    "textLeave": "Leave",
+    "textDelete": "Remove",
+    "textCancel": "Cancel",
+    "textConfirm": "Confirm",
+    "textAreYouSure": "Are you sure you want to delete it?",
+    "textCreateNew": "Create new patrol",
+    "textAdamName": "Enter a name",
+    "textAdamCallsign": "Enter a callsign",
+    "textErrorA": "Name must be less than 10 characters.",
+    "textErrorB": "Name must be more than 4 character.",
+    "textErrorC": "Name must be less than 6 characters.",
+    "textErrorD": "Name must be more than 1 character.",
+
+    "textAge": "Age",
+    "textName": "Name",
+    "textSex": "Sex",
+    "textLicense": "Driver's license",
+    "textPhone": "Phone",
+    "textId": "User ID",
+    "textStatus": "Status",
+    "textStatusNotFound": "Status not found",
+    "textNotFound": "Not found",
+    "textCitizenVehicles": "Citizen's vehicles:",
+    "textCitizenWeapons": "Citizen's weapons:",
+    "textCitizenSearchLabel": "Search resident",
+    "textCitizenSearchHint": "Enter any resident data such as name, phone number, etc.",
+
+    "textVehId": "Veh ID",
+    "textVehName": "Name",
+    "textVehPlate": "Plate",
+    "textVehOwner": "Owner",
+    "textVehColor": "Vehicle Color",
+    "textVehVendor": "Vendor",
+    "textVehStatus": "Status",
+    "textVehVendorPhone": "Vendor number",
+    "textVehType": "Vehicle type",
+    "textVehClass": "Vehicle class",
+    "textVehManufacturer": "Manufacturer",
+    "textVehSearchLabel": "Search vehicle",
+    "textVehSearchHint": "Enter any vehicle data such as name, plate, owner, etc.",
+
+    "textCode": "Code",
+    "textDescription": "Description",
+    "textLawNumber": "№",
+    "textLawName": "Name",
+    "textPeriod": "Period",
+    "textPenalty": "Penalty",
+    "textPeriodUnit": "min",
+    "textPeriodPenalty": "$",
+    "textLawSearchLabel": "Search law",
+    "textLawSearchHint": "Enter any data such as text, code number, etc.",
+    "textTenCodesSearchLabel": "Search code",
+    "textTenCodesSearchHint": "Enter any data such as text, code number, etc.",
+
+
+    "textWeaponId": "Id",
+    "textWeaponOwner": "Owner",
+    "textWeaponName": "Name",
+    "textWeaponSeller": "Seller",
+    "textWeaponSerial": "Serial",
+    "textWeaponStatus": "Status",
+    "textWeaponUnregistered": "Unregistered",
+    "textWeaponSearchLabel": "Search weapon",
+    "textWeaponSearchHint": "Enter any weapon data such as name, serial, owner, etc.",
+
+    "rankList": [
+        {
+            "name": "Recruit",
+            "id": 0,
+            "image": null
+        },{
+            "name": "Police Officer I",
+            "id": 1,
+            "image": null
+        },{
+            "name": "Police Officer II",
+            "id": 2,
+            "image": null
+        },{
+            "name": "Police Officer III",
+            "id": 3,
+            "image": "03.png"
+        },{
+            "name": "Police Officer III+1",
+            "id": 4,
+            "image": "04.png"
+        },{
+            "name": "Detective I",
+            "id": 5,
+            "image": "05.png"
+        },{
+            "name": "Detective II",
+            "id": 6,
+            "image": "06.png"
+        },{
+            "name": "Detective III",
+            "id": 7,
+            "image": "07.png"
+        },{
+            "name": "Sergeant I",
+            "id": 8,
+            "image": "08.png"
+        },{
+            "name": "Sergeant II",
+            "id": 9,
+            "image": "09.png"
+        },{
+            "name": "Lieutenant I",
+            "id": 9,
+            "image": "10.png"
+        },{
+            "name": "Lieutenant II",
+            "id": 9,
+            "image": "10.png"
+        },{
+            "name": "Captain I",
+            "id": 9,
+            "image": "11.png"
+        },{
+            "name": "Captain II",
+            "id": 9,
+            "image": "11.png"
+        },{
+            "name": "Captain III",
+            "id": 9,
+            "image": "11.png"
+        },{
+            "name": "Commander",
+            "id": 9,
+            "image": "12.png"
+        },{
+            "name": "Deputy Chief",
+            "id": 9,
+            "image": "13.png"
+        },{
+            "name": "Assistant Chief",
+            "id": 9,
+            "image": "14.png"
+        },{
+            "name": "Chief of Police",
+            "id": 9,
+            "image": "15.png"
+        },{
+            "name": "Administrator",
+            "id": 9,
+            "image": "16.png"
+        }
+    ],
+
+    "statusList": [
+        "Dead",
+        "Standart",
+        "Wanted",
+        "Aressted",
+        "Prison",
+        "Special"
+    ],
+
+    "licenseText": [
+        "Active",
+        "None"
+    ],
+
+    "vehStatusList": [
+        "Destroyed",
+        "Normal",
+        "Wanted",
+        "Arrested",
+        "Lost",
+        "Special"
+    ],
+
+    "weaponStatusList": [
+        "Destroyed",
+        "Standart",
+        "Wanted",
+        "Arrested",
+        "Lost",
+        "Special"
+    ],
+
+    "vehTypes": [
+        "Car",
+        "Plane"
+    ]
+
+}
