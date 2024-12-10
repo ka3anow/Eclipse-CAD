@@ -15,7 +15,7 @@
                 class="text-white"
                 elevation="12"
                 @click="changeSubpage(index)"
-                :class="{ active: isActive === index  || (index === 2 && isActive === 10) || (index === 3 && isActive === 20) || (index === 4 && isActive === 30)}"
+                :class="{ active: isActive === index  || (index === 1 && isActive === 40) || (index === 2 && isActive === 10) || (index === 3 && isActive === 20) || (index === 4 && isActive === 30)}"
                 >
                 {{ translate[button] }}
             </v-btn>

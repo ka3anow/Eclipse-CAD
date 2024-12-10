@@ -1,5 +1,5 @@
 import { useAppStore, useTranslation } from "@/stores/app";
-import type { User, Vehicle, Weapon } from "@/types/types";
+import type { Calls, User, Vehicle, Weapon } from "@/types/types";
 
 export function useCommon() {
     const store = useAppStore();
@@ -7,10 +7,11 @@ export function useCommon() {
     const policeList: User[] = store.shiftList;
     const vehiclesList: Vehicle[] = store.vehiclesList;
     const weaponsList: Weapon[] = store.weaponsList;
+    const callList: Calls[] = store.policeCalls
     const translate: any = useTranslation().translate;
 
-    function getOwnerById(vehId: number) {
-        const owner = userList.find((item: { id: number; }) => item.id == vehId)
+    function getOwnerById(id: number) {
+        const owner = userList.find((user: { id: number; }) => user.id == id)
         return owner? `${owner.name} ${owner.surname}` : translate.textNotFound;
     }
 
@@ -39,6 +40,14 @@ export function useCommon() {
         }
     }
 
+    function selectCallById(id: number) {
+        const foundCall = callList.find((call: {id:number}) => call.id == id);
+        if (foundCall) {
+            store.activeCall = foundCall;
+            store.changeSubPage(40); 
+        }
+    }
+
     const getUserById = (userId: number): User | null => {
         const owner = userList.find((item: { id: number; }) => item.id == userId)
         return owner || null;
@@ -49,13 +58,32 @@ export function useCommon() {
         return owner || null;
     }
 
+    const convertTime = (date : string) => {
+        const newDate = new Date(date);
+        const hours = newDate.getHours();
+        const minutes = newDate.getMinutes();
+        return `${hours}:${minutes}`
+    }
+    
+    const convertDate = (date: string) => {
+        const newDate = new Date(date);
+        const day = newDate.getDate();
+        let month = newDate.getMonth();
+        month += 1;
+        const year = newDate.getFullYear();
+        return `${day}.${month}.${year}`
+    }
+
     return {
         getOwnerById,
+        getUserById,
+        getPoliceUserById,
         selectUserById,
         selectVehicleById,
-        getUserById,
+        selectCallById,
         selectWeaponById,
-        getPoliceUserById
+        convertTime,
+        convertDate
     }
 }
 

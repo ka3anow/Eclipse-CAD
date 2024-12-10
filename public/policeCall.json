@@ -1,0 +1,43 @@
+[
+    {
+        "id": 0,
+        "label": "Call #1",
+        "description": "Help, there's gunfire! There may be wounded",
+        "callid": 0,
+        "units": [76, 64],
+        "status": 0,
+        "date": "Tue Dec 10 2024 00:11:40 GMT+0300 (Москва, стандартное время)"
+    },{
+        "id": 1,
+        "label": "Call #2",
+        "description": "I detected some suspicious driving. Please check it out!",
+        "callid": 0,
+        "units": [],
+        "status": 1,
+        "date": "Tue Dec 14 2023 00:11:40 GMT+0300 (Москва, стандартное время)"
+    },{
+        "id": 2,
+        "label": "Call #3",
+        "description": "I detected some suspicious driving. Please check it out!",
+        "callid": 25,
+        "units": [90],
+        "status": 2,
+        "date": "Tue Dec 1 2024 00:11:40 GMT+0300 (Москва, стандартное время)"
+    },{
+        "id": 3,
+        "label": "Call #4",
+        "description": "I detected some suspicious driving. Please check it out!",
+        "callid": -1,
+        "units": [],
+        "status": 3,
+        "date": "Tue Dec 5 2023 00:23:15 GMT+0300 (Москва, стандартное время)"
+    },{
+        "id": 4,
+        "label": "Call #5",
+        "description": "I detected some suspicious driving. Please check it out!",
+        "callid": 22,
+        "units": [],
+        "status": 4,
+        "date": "Tue Dec 3 2024 00:11:40 GMT+0300 (Москва, стандартное время)"
+    }
+]

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type { AppState, User, Vehicle, Law, Codes, Weapon, Patrol } from '@/types/types';
+import type { AppState, User, Vehicle, Law, Codes, Weapon, Patrol, Calls } from '@/types/types';
 import { ref } from "vue"
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ export const useAppStore = defineStore('app', {
 
         shiftList: [] as User[],
         patrolList: [] as Patrol[],
-
+        activeCall: {} as Calls,
         activeUser: {} as User,
         activeVehicle: {} as Vehicle,
         activeWeapon: {} as Weapon,
@@ -47,11 +47,13 @@ export const useAppStore = defineStore('app', {
         weaponsList: [] as Weapon[],
         stateLaws: [] as Law[],
         tenCodes: [] as Codes[],
+        policeCalls: [] as Calls[],
         residentSearchQuery: "",
         vehicleSearchQuery: "",
         weaponSearchQuery: "",
         lawSearchQuery: "",
         tenCodesSearchQuery: "",
+        callSearchQuery: "",
         loading: true,
         error: ""
     }),
@@ -102,6 +104,19 @@ export const useAppStore = defineStore('app', {
                 }
             }
         },
+        joinPlayerToCall(playerId: number, callId: number) {
+            const Call: any = this.policeCalls.find(item => item.id === callId);
+            Call.units.push(playerId);
+        },
+        leavePlayerFromCall(playerId: number, callId: number) {
+            const Call: any = this.policeCalls.find(item => item.id === callId);
+            const index = Call?.units.indexOf(playerId);
+            if (index != -1) {
+                Call.units.splice(index, 1);
+            } else {
+                console.log('error, player not found in Call')
+            }
+        },
         leavePlayerFromAllAdams(playerId: number) {
             this.patrolList.forEach(element => {
                 const index = element.members.indexOf(playerId);
@@ -131,6 +146,9 @@ export const useAppStore = defineStore('app', {
         createNewAdam(adam: Patrol) {
             this.patrolList.push(adam);
         },
+        changeCallStatus(status: number) {
+            this.activeCall.status = status;
+        },
         changeUserStatus(status: number) {
             this.activeUser.status = status;
         },
@@ -139,6 +157,9 @@ export const useAppStore = defineStore('app', {
         },
         changeWeaponStatus(status: number) {
             this.activeWeapon.status = status;
+        },
+        changeCallSearchQuery(query:string) {
+            this.callSearchQuery = query;
         },
         changeResidentSearchQuery(query: string) {
             this.residentSearchQuery = query;
@@ -159,14 +180,15 @@ export const useAppStore = defineStore('app', {
             this.loading = true;
             this.error = null;
             try {
-                const [usersResponse, vehiclesResponse, weaponsResponse, lawsResponse, tenCodesResponse, shiftListResponse, patrolListResponse] = await Promise.all([
+                const [usersResponse, vehiclesResponse, weaponsResponse, lawsResponse, tenCodesResponse, shiftListResponse, patrolListResponse, policeCallsResponse] = await Promise.all([
                     axios.get('/citizenList.json'),
                     axios.get('/carList.json'),
                     axios.get('/weaponList.json'),
                     axios.get('/stateLaws.json'),
                     axios.get('/tenCodes.json'),
                     axios.get('/shiftList.json'),
-                    axios.get('/patrolList.json')
+                    axios.get('/patrolList.json'),
+                    axios.get('/policeCall.json')
                 ]);
 
                 this.residentList = usersResponse.data.results;
@@ -176,6 +198,7 @@ export const useAppStore = defineStore('app', {
                 this.tenCodes = tenCodesResponse.data;
                 this.shiftList = shiftListResponse.data;
                 this.patrolList = patrolListResponse.data;
+                this.policeCalls = policeCallsResponse.data;
 
             } catch (err) {
                 this.error = err;

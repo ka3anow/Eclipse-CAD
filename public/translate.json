@@ -42,6 +42,25 @@
     "textErrorC": "Name must be less than 6 characters.",
     "textErrorD": "Name must be more than 1 character.",
 
+    "textCallDate": "Date",
+    "textCallDescription": "Description",
+    "textCallUnits": "Units",
+    "textCallSearchLabel": "Search a call",
+    "textCallSearchHint": "Enter any call data such a id, date, status etc.",
+    "textCallCalling": "Calling: ",
+    "textCallScene": "Units on the scene: ",
+    "textCitizen": "Local resident",
+    "textCallJoin": "Join",
+    "textCallLeave": "Leave",
+    "textCallShowOnMap": "Show on map",
+    "callStatusList": [
+        "Under control",
+        "Unknown",
+        "Normal",
+        "Threat",
+        "Dangerous"
+    ],
+
     "textAge": "Age",
     "textName": "Name",
     "textSex": "Sex",

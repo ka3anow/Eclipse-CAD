@@ -6,7 +6,7 @@ $radius: 13px;
 $shadowBlack: 0 5px 12px 0 #00000088;
 $textShadowBlack: 0 5px 12px #000000c0;
 $black: #000000c0;
-$white: #ffffff40;
+$white: #ffffff62;
 
 html {
     overflow: hidden;
@@ -711,6 +711,69 @@ img {
                             width: 15%; 
                         }
                     }
+
+                    &.call {
+                        .unit {
+                            color: rgb(var(--v-theme-secondary));
+                            &:before {
+                                content: ", ";
+                            }
+                            &:first-child {
+                                &:before {
+                                    content: "";
+                                }
+                            }
+                        }
+
+                        .item-list {
+                            position: relative;
+                            .status-0 {
+                                color: $white
+                            }
+                            .status-1 {
+                                color: $black;
+                            }
+                            .status-2 {
+                                color: rgb(var(--v-theme-success));
+                            }
+                            .status-3 {
+                                color: rgb(var(--v-theme-active));
+                            }
+                            .status-4 {
+                                color: rgb(var(--v-theme-error));
+                            }
+
+                            &.active {
+                                &:before {
+                                    content: "";
+                                    width: 10px;
+                                    height: 100%;
+                                    background-color: rgb(var(--v-theme-secondary));
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    border-radius: 0 6px 6px 0;
+                                    left: inherit
+                                }
+
+                                
+                            }
+                            &.passive {
+                                opacity: 0.5;
+                            }
+                            &:hover {
+                                .unit {
+                                    color: rgb(var(--v-theme-primary))
+                                }
+                            }
+                        }
+                    }
+
+                    &.callpage {
+                        .select {
+                            width: 40%;
+                        }
+                    }
                 }
                 
                 .main-card {
@@ -738,51 +801,6 @@ img {
                             span {
                                 &.text {
                                     margin-left: 15px;
-                                }
-
-                                &.icon {
-                                    width: 20px;
-                                    height: 20px;
-                                    margin-left: 5px;
-                                }
-                                &.rank-3 {
-                                    background-image: url('/ranks/03.png');
-                                }
-                                &.rank-4 {
-                                    background-image: url('/ranks/04.png');
-                                }
-                                &.rank-5 {
-                                    background-image: url('/ranks/05.png');
-                                }
-                                &.rank-6 {
-                                    background-image: url('/ranks/06.png');
-                                }
-                                &.rank-7 {
-                                    background-image: url('/ranks/07.png');
-                                }
-                                &.rank-8 {
-                                    background-image: url('/ranks/08.png');
-                                }
-                                &.rank-9 {
-                                    background-image: url('/ranks/09.png');
-                                }
-                                &.rank-10 {
-                                    background-image: url('/ranks/10.png');
-                                }
-                                &.rank-11 {
-                                    background-image: url('/ranks/11.png');
-                                }
-                                &.rank-12 {
-                                    background-image: url('/ranks/12.png');
-                                }
-                                &.rank-13 {
-                                    background-image: url('/ranks/13.png');
-                                }
-                                &.rank-14 {
-                                    background-image: url('/ranks/14.png');
-                                }
-                                &.rank-15 {
-                                    background-image: url('/ranks/15.png');
                                 }
 
                                 &.onduty {
@@ -908,6 +926,54 @@ img {
     }
 }
 
+span {
+    &.icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+        display: block;
+    }
+    &.rank-3 {
+        background-image: url('/ranks/03.png');
+    }
+    &.rank-4 {
+        background-image: url('/ranks/04.png');
+    }
+    &.rank-5 {
+        background-image: url('/ranks/05.png');
+    }
+    &.rank-6 {
+        background-image: url('/ranks/06.png');
+    }
+    &.rank-7 {
+        background-image: url('/ranks/07.png');
+    }
+    &.rank-8 {
+        background-image: url('/ranks/08.png');
+    }
+    &.rank-9 {
+        background-image: url('/ranks/09.png');
+    }
+    &.rank-10 {
+        background-image: url('/ranks/10.png');
+    }
+    &.rank-11 {
+        background-image: url('/ranks/11.png');
+    }
+    &.rank-12 {
+        background-image: url('/ranks/12.png');
+    }
+    &.rank-13 {
+        background-image: url('/ranks/13.png');
+    }
+    &.rank-14 {
+        background-image: url('/ranks/14.png');
+    }
+    &.rank-15 {
+        background-image: url('/ranks/15.png');
+    }
+}
+
 .shadow {
     text-shadow: $textShadowBlack;
 }
@@ -990,6 +1056,22 @@ img {
 }
 .v-list-item.vehicle-color-5 .v-list-item-title {
     color: rgb(var(--v-theme-secondary));
+}
+
+.v-list-item.calls-color-0 .v-list-item-title {
+    color: $white;
+}
+.v-list-item.calls-color-1 .v-list-item-title {
+    color: $black;
+}
+.v-list-item.calls-color-2 .v-list-item-title {
+    color: rgb(var(--v-theme-success));
+}
+.v-list-item.calls-color-3 .v-list-item-title {
+    color: rgb(var(--v-theme-active));
+}
+.v-list-item.calls-color-4 .v-list-item-title {
+    color: rgb(var(--v-theme-error));
 }
 
 .v-img {

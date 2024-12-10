@@ -13,11 +13,14 @@ export interface AppState {
     weaponsList: Array<Weapon>
     stateLaws: Array<Law>,
     tenCodes: Array<Codes>,
+    policeCalls: Array<Calls>,
     loading: boolean,
     error: any,
+    activeCall: Calls,
     activeUser: User,
     activeVehicle: Vehicle,
     activeWeapon: Weapon,
+    callSearchQuery: string,
     residentSearchQuery: string,
     vehicleSearchQuery: string,
     weaponSearchQuery: string,
@@ -110,4 +113,14 @@ export interface Patrol {
     id: number,
     callsign: string,
     members: Array<number>,
+}
+
+export interface Calls {
+    id: number,
+    label: string,
+    description: string,
+    callid: number,
+    units: Array<number>,
+    status: number,
+    date: string
 }

@@ -37,5 +37,4 @@ function changePage(number: number) {
   appStore.changePage(number);
 }
 const translate: any = useTranslation().translate
-
 </script>

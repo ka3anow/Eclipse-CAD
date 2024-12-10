@@ -44,6 +44,10 @@
                 <transition name="list">
                     <page-weapon-info v-if="store.subpage == 30" />
                 </transition>
+                
+                <transition name="list">
+                    <page-call-info v-if="store.subpage == 40" />
+                </transition>
 
             </div>
         </div>
