@@ -1,7 +1,7 @@
 <template>
     <div class="subpage">
         <div class="d-flex justify-space-between mb-2">
-            <span class="text-h4 shadow">{{ translate.buttonE }}</span>
+            <span class="text-h4 shadow">{{ translate.buttonWeapons }}</span>
             <div class="search">
                 <v-text-field
                     :label="translate.textWeaponSearchLabel"
@@ -20,7 +20,7 @@
             <span class="status">{{ translate.textWeaponStatus }}</span>
         </div>
         <div class="list weapon">
-            <div class="item-list weapon" :class="'status_'+weapon.status" v-for="(weapon, index) in filteredWeapons" :key="index + '_uuid'" @click="selectWeaponById(weapon.id)" >
+            <div class="item-list weapon" v-ripple :class="'status_'+weapon.status" v-for="(weapon, index) in filteredWeapons" :key="index + '_uuid'" @click="selectWeaponById(weapon.id)" >
                 <span class="id">{{ weapon.id }}</span>
                 <span class="owner">{{ getOwnerById(weapon.owner) }}</span>
                 <span class="name">{{ weapon.name }}</span>

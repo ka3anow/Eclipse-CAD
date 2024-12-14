@@ -4,18 +4,21 @@
         "number": "1.1",
         "description": "It is illegal to speed in the state of San Andreas",
         "penalty": 200,
-        "period": 20
+        "period": 20,
+        "id": 0
     },{
         "name": "Exceeding the speed limit by 20 km/h",
         "number": "1.2",
         "description": "It is illegal to speed in the state of San Andreas",
         "penalty": 500,
-        "period": 50
+        "period": 50,
+        "id": 1
     },{
         "name": "Exceeding the speed limit by 40 km/h",
         "number": "1.3",
         "description": "It is illegal to speed in the state of San Andreas",
         "penalty": 1000,
-        "period": 120
+        "period": 120,
+        "id": 2
     }
 ]

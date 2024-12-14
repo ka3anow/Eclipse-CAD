@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type { AppState, User, Vehicle, Law, Codes, Weapon, Patrol, Calls } from '@/types/types';
+import type { AppState, User, Vehicle, Law, Codes, Weapon, Patrol, Calls, Ticket } from '@/types/types';
 import { ref } from "vue"
 import axios from 'axios';
 
@@ -48,9 +48,11 @@ export const useAppStore = defineStore('app', {
         stateLaws: [] as Law[],
         tenCodes: [] as Codes[],
         policeCalls: [] as Calls[],
+        ticketList: [] as Ticket[],
         residentSearchQuery: "",
         vehicleSearchQuery: "",
         weaponSearchQuery: "",
+        ticketSearchQuery: "",
         lawSearchQuery: "",
         tenCodesSearchQuery: "",
         callSearchQuery: "",
@@ -146,6 +148,13 @@ export const useAppStore = defineStore('app', {
         createNewAdam(adam: Patrol) {
             this.patrolList.push(adam);
         },
+        createNewTicket(ticket: Ticket) {
+            this.ticketList.push(ticket);
+        },
+        removeTicketById(ticketId: number) {
+            const index: any = this.ticketList.findIndex(item => item.id === ticketId);
+            this.ticketList.splice(index, 1);
+        },
         changeCallStatus(status: number) {
             this.activeCall.status = status;
         },
@@ -170,6 +179,9 @@ export const useAppStore = defineStore('app', {
         changeWeaponSearchQuery(query: string) {
             this.weaponSearchQuery = query;
         },
+        changeTicketSearchQuery(query: string) {
+            this.ticketSearchQuery = query;
+        },
         changeLawSearchQuery(query: string) {
             this.lawSearchQuery = query;
         },
@@ -180,7 +192,7 @@ export const useAppStore = defineStore('app', {
             this.loading = true;
             this.error = null;
             try {
-                const [usersResponse, vehiclesResponse, weaponsResponse, lawsResponse, tenCodesResponse, shiftListResponse, patrolListResponse, policeCallsResponse] = await Promise.all([
+                const [usersResponse, vehiclesResponse, weaponsResponse, lawsResponse, tenCodesResponse, shiftListResponse, patrolListResponse, policeCallsResponse, ticketListResponse] = await Promise.all([
                     axios.get('/citizenList.json'),
                     axios.get('/carList.json'),
                     axios.get('/weaponList.json'),
@@ -188,7 +200,8 @@ export const useAppStore = defineStore('app', {
                     axios.get('/tenCodes.json'),
                     axios.get('/shiftList.json'),
                     axios.get('/patrolList.json'),
-                    axios.get('/policeCall.json')
+                    axios.get('/policeCall.json'),
+                    axios.get('/ticketList.json')
                 ]);
 
                 this.residentList = usersResponse.data.results;
@@ -199,6 +212,7 @@ export const useAppStore = defineStore('app', {
                 this.shiftList = shiftListResponse.data;
                 this.patrolList = patrolListResponse.data;
                 this.policeCalls = policeCallsResponse.data;
+                this.ticketList = ticketListResponse.data
 
             } catch (err) {
                 this.error = err;

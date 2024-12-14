@@ -1,7 +1,7 @@
 <template>
     <div class="subpage">
         <div class="d-flex justify-space-between mb-2">
-            <span class="text-h4 shadow">{{ translate.buttonF }}</span>
+            <span class="text-h4 shadow">{{ translate.buttonLaws }}</span>
             <div class="search">
                 <v-text-field
                     :label="translate.textLawSearchLabel"

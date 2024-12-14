@@ -24,11 +24,19 @@
                 </transition>
 
                 <transition name="list">
-                    <page-laws v-if="store.subpage == 5" />
+                    <page-tickets v-if="store.subpage == 5" />
                 </transition>
 
                 <transition name="list">
-                    <page-ten-codes v-if="store.subpage == 6" />
+                    <page-laws v-if="store.subpage == 6" />
+                </transition>
+
+                <transition name="list">
+                    <page-ten-codes v-if="store.subpage == 7" />
+                </transition>
+
+                <transition name="list">
+                    <page-management v-if="store.subpage == 8" />
                 </transition>
 
 

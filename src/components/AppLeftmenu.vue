@@ -55,7 +55,7 @@ const playerData = store.user;
 const policeUserData: PoliceUserData = playerData?.police || {rank:0, onDuty: 0, onPanic: false, callsign:"no data"};
 const translate: any = useTranslation().translate;
 
-const buttons = ['buttonA', 'buttonB', 'buttonC', 'buttonD', 'buttonE', 'buttonF', 'buttonG', 'buttonH'];
+const buttons = ['buttonMainPanel', 'buttonCalls', 'buttonResidents', 'buttonVehicles', 'buttonWeapons', 'buttonTickets', 'buttonLaws', 'buttonCodes', 'buttonManagement'];
 const isActive = ref(store.subpage)
 
 function changeSubpage( number: number ) {

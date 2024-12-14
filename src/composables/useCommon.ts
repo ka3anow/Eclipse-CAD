@@ -1,5 +1,5 @@
 import { useAppStore, useTranslation } from "@/stores/app";
-import type { Calls, User, Vehicle, Weapon } from "@/types/types";
+import type { Calls, Law, User, Vehicle, Weapon } from "@/types/types";
 
 export function useCommon() {
     const store = useAppStore();
@@ -8,6 +8,7 @@ export function useCommon() {
     const vehiclesList: Vehicle[] = store.vehiclesList;
     const weaponsList: Weapon[] = store.weaponsList;
     const callList: Calls[] = store.policeCalls
+    const stateLaws: Law[] = store.stateLaws;
     const translate: any = useTranslation().translate;
 
     function getOwnerById(id: number) {
@@ -58,6 +59,15 @@ export function useCommon() {
         return owner || null;
     }
 
+    const getLawById = (id:number): Law | null  => {
+        const law = stateLaws.find((item: { id: number; }) => item.id == id)
+        return law || null;
+    }
+
+    const getWeaponSerial = (serial: number) => {
+        return serial? serial: translate.textWeaponUnregistered;
+    }
+
     const convertTime = (date : string) => {
         const newDate = new Date(date);
         const hours = newDate.getHours();
@@ -83,7 +93,9 @@ export function useCommon() {
         selectCallById,
         selectWeaponById,
         convertTime,
-        convertDate
+        convertDate,
+        getLawById,
+        getWeaponSerial
     }
 }
 

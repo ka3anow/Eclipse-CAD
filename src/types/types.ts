@@ -14,6 +14,7 @@ export interface AppState {
     stateLaws: Array<Law>,
     tenCodes: Array<Codes>,
     policeCalls: Array<Calls>,
+    ticketList: Array<Ticket>,
     loading: boolean,
     error: any,
     activeCall: Calls,
@@ -24,6 +25,7 @@ export interface AppState {
     residentSearchQuery: string,
     vehicleSearchQuery: string,
     weaponSearchQuery: string,
+    ticketSearchQuery: string,
     lawSearchQuery: string,
     tenCodesSearchQuery: string
 }
@@ -90,7 +92,8 @@ export interface Law {
     number: string,
     description: string,
     penalty: number,
-    period: number
+    period: number,
+    id: number
 }
 
 export interface Codes {
@@ -123,4 +126,13 @@ export interface Calls {
     units: Array<number>,
     status: number,
     date: string
+}
+
+export interface Ticket {
+    id: number,
+    owner: number,
+    author: number,
+    lawId: number,
+    status: number,
+    date: string,
 }

@@ -1,63 +1,65 @@
 <template>
-    <div class="subpage">
-        <span class="text-h4 shadow d-block mb-3">{{ translate.buttonA }}</span>
+    <div>
+        <div class="subpage">
+            <span class="text-h4 shadow d-block mb-3">{{ translate.buttonMainPanel }}</span>
 
-        <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAShiftWorkers }}</span>
-        <v-row>
-            <v-col cols="12">
-                <v-card class="main-card" elevation="8">
-                    <div class="shift-list">
-                        <div class="shift-item active" v-for="user in filteredShiftList" :key="user.id + 'sw'" @click="selectUserById(user.id)">
-                            <span v-if="user.police.onPanic == false" :class="'onduty duty_'+ user.police.onDuty"></span>
-                            <span v-else class="onduty panic"></span>
+            <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAShiftWorkers }}</span>
+            <v-row>
+                <v-col cols="12">
+                    <v-card class="main-card" elevation="8">
+                        <div class="shift-list">
+                            <div class="shift-item active" v-for="user in filteredShiftList" :key="user.id + 'sw'" @click="selectUserById(user.id)">
+                                <span v-if="user.police.onPanic == false" :class="'onduty duty_'+ user.police.onDuty"></span>
+                                <span v-else class="onduty panic"></span>
 
-                            <span class="text">{{ user.name }} {{ user.surname }} ({{ user.police.callsign }})</span>
-                            <span :class="'icon rank-' + user.police.rank"></span>
+                                <span class="text">{{ user.name }} {{ user.surname }} ({{ user.police.callsign }})</span>
+                                <span :class="'icon rank-' + user.police.rank"></span>
+                            </div>
                         </div>
-                    </div>
-                </v-card>
-            </v-col>
-        </v-row>
+                    </v-card>
+                </v-col>
+            </v-row>
 
-        <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAPatrolOfficers }}</span>
-        <v-row>
-            <v-col cols="12">
-                <v-card class="main-card" elevation="8">
-                    <div class="item adam-list d-flex position-relative" v-for="(team, index) in patrolList" :key="'adam-'+ index" >
-                        {{team.name}} ({{ team.callsign }}):
-                        <div class="member" v-for="user in team.members">&nbsp;{{ getPoliceUserById(user)?.name }}&nbsp;{{ getPoliceUserById(user)?.surname }}&nbsp;({{ getPoliceUserById(user)?.police?.callsign }})</div>
-                        <v-btn @click="joinPlayerToAdam(user.id, team.id)" v-if="!isUserInAdam(team.members)" color="secondary" size="x-small" class="ml-2">{{ translate.textJoin }}</v-btn>
-                        <v-btn @click="leavePlayerFromAdam(user.id, team.id)" v-else color="secondary" size="x-small" class="ml-2">{{translate.textLeave}}</v-btn>
-                        <div class="flex-grow-1"></div>
-                        <v-btn @click="removeAdamById(team.id)" v-if="team.members.length == 0" color="error" size="x-small" class="ml-2 right-0">{{ translate.textDelete }}</v-btn>
-                    </div>
-                    <div class="control mt-2">
-                        <v-btn size="small" class="float-right" color="secondary" @click="showModalNewAdam = true">{{ translate.textCreateNew }}</v-btn>
-                    </div>
-                </v-card>
-            </v-col>
-        </v-row>
+            <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAPatrolOfficers }}</span>
+            <v-row>
+                <v-col cols="12">
+                    <v-card class="main-card" elevation="8">
+                        <div class="item adam-list d-flex position-relative" v-for="(team, index) in patrolList" :key="'adam-'+ index" >
+                            {{team.name}} ({{ team.callsign }}):
+                            <div class="member" v-for="user in team.members">&nbsp;{{ getPoliceUserById(user)?.name }}&nbsp;{{ getPoliceUserById(user)?.surname }}&nbsp;({{ getPoliceUserById(user)?.police?.callsign }})</div>
+                            <v-btn @click="joinPlayerToAdam(user.id, team.id)" v-if="!isUserInAdam(team.members)" color="secondary" size="x-small" class="ml-2">{{ translate.textJoin }}</v-btn>
+                            <v-btn @click="leavePlayerFromAdam(user.id, team.id)" v-else color="secondary" size="x-small" class="ml-2">{{translate.textLeave}}</v-btn>
+                            <div class="flex-grow-1"></div>
+                            <v-btn @click="removeAdamById(team.id)" v-if="team.members.length == 0" color="error" size="x-small" class="ml-2 right-0">{{ translate.textDelete }}</v-btn>
+                        </div>
+                        <div class="control mt-2">
+                            <v-btn size="small" class="float-right" color="secondary" @click="showModalNewAdam = true">{{ translate.textCreateNew }}</v-btn>
+                        </div>
+                    </v-card>
+                </v-col>
+            </v-row>
 
-        <v-row>
-            <v-col cols="6">
-                <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAWanted }}</span>
-                <v-card class="main-card" elevation="8">
-                    <div class="item d-flex justify-space-between mb-1 active" v-for="(user, index) in filteredUsers" :key="'wntd' + index" @click="selectUserById(user.id)">
-                        <span>{{ user.name }} {{ user.surname }}</span>
-                        <span>{{ user.phone }}</span>
-                    </div>
-                </v-card>
-            </v-col>
-            <v-col cols="6">
-                <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAWantedVehicle }}</span>
-                <v-card class="main-card" elevation="8">
-                    <div class="item d-flex justify-space-between mb-1 active" v-for="(vehicle, index) in filteredVehicles" :key="'wntd' + index" @click="selectVehicleById(vehicle.id)">
-                        <span>{{ vehicle.vehicleName }}</span>
-                        <span>{{ vehicle.plate }}</span>
-                    </div>
-                </v-card>
-            </v-col>
-        </v-row>
+            <v-row>
+                <v-col cols="6">
+                    <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAWanted }}</span>
+                    <v-card class="main-card" elevation="8">
+                        <div class="item d-flex justify-space-between mb-1 active" v-for="(user, index) in filteredUsers" :key="'wntd' + index" @click="selectUserById(user.id)">
+                            <span>{{ user.name }} {{ user.surname }}</span>
+                            <span>{{ user.phone }}</span>
+                        </div>
+                    </v-card>
+                </v-col>
+                <v-col cols="6">
+                    <span class="text-h5 d-block shadow mb-3" >{{ translate.pageAWantedVehicle }}</span>
+                    <v-card class="main-card" elevation="8">
+                        <div class="item d-flex justify-space-between mb-1 active" v-for="(vehicle, index) in filteredVehicles" :key="'wntd' + index" @click="selectVehicleById(vehicle.id)">
+                            <span>{{ vehicle.vehicleName }}</span>
+                            <span>{{ vehicle.plate }}</span>
+                        </div>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </div>
 
         <ModalWindow
             :title="translate.textAreYouSure"
@@ -68,7 +70,7 @@
         <ModalNewAdam
             v-model="showModalNewAdam">
         </ModalNewAdam>
-
+        
     </div>
 </template>
 

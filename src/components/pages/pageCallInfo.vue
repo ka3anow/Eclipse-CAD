@@ -7,7 +7,7 @@
 
         <v-row>
             <v-col cols="12">
-                <v-card class="main-card mb-2" elevation="8">
+                <v-card class="main-card mb-2" elevation="8" :class="`status_` + activeCall.status">
                     {{ activeCall.description }}
 
                     <v-row class="mt-2">
@@ -22,7 +22,7 @@
                             </div>
                             <div v-if="activeCall.units.length > 0">
                                 <span>{{ translate.textCallScene }}</span>
-                                <span class="d-flex align-center active" v-for="unit in activeCall.units" @click="selectUserById(getPoliceUserById(unit)?.id || 0)">
+                                <span class="d-flex align-center align-content-start active" v-for="unit in activeCall.units" @click="selectUserById(getPoliceUserById(unit)?.id || 0)">
                                     {{ getPoliceUserById(unit)?.name }} {{ getPoliceUserById(unit)?.surname }} ({{ getPoliceUserById(unit)?.police?.callsign }})
                                     <span :class="'icon rank-' + getPoliceUserById(unit)?.police?.rank"></span>
                                 </span>

@@ -1,7 +1,7 @@
 <template>
     <div class="subpage call">
         <div class="d-flex justify-space-between mb-2">
-            <span class="text-h4 shadow">{{ translate.buttonB }}</span>
+            <span class="text-h4 shadow">{{ translate.buttonCalls }}</span>
             <div class="search">
                 <v-text-field 
                     :label="translate.textCallSearchLabel"
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="list">
-            <div class="item-list" :class="{active: checkUserInCall(call.units), passive: call.status == 0}" v-for="(call, index) in filteredCalls" :key="index + '_uuid'" @click="selectCallById(call.id)" >
+            <div class="item-list" v-ripple :class="{active: checkUserInCall(call.units), passive: call.status == 0}" v-for="(call, index) in filteredCalls" :key="index + '_uuid'" @click="selectCallById(call.id)" >
                 <v-row>
                     <v-col cols="3" class="d-flex flex-column">
                         <span class="mb-1"><b>{{ convertTime(call.date) }}</b>&nbsp;{{ convertDate(call.date) }}</span>
