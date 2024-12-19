@@ -64,7 +64,7 @@ export function useCommon() {
         return law || null;
     }
 
-    const getWeaponSerial = (serial: number) => {
+    const getWeaponSerial = (serial: string) => {
         return serial? serial: translate.textWeaponUnregistered;
     }
 

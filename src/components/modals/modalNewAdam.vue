@@ -68,11 +68,11 @@ watch(() => props.modelValue, (newValue) => {
 
 const nameRules: any[] = [
     (value: any) => (value?.length <= 9) || translate.textErrorA,
-    (value: any) => (value.length >= 4) || translate.textErrorB,
+    (value: any) => (value.length >= 1) || translate.textErrorB,
 ];
 
 const callsingRules: any[] = [
-    (value: any) => (value?.length <= 5) || translate.textErrorC,
+    (value: any) => (value?.length <= 9) || translate.textErrorC,
     (value: any) => (value.length >= 1) || translate.textErrorD,
 ];
 

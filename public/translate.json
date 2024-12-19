@@ -39,8 +39,8 @@
     "textAdamName": "Enter a name",
     "textAdamCallsign": "Enter a callsign",
     "textErrorA": "Name must be less than 10 characters.",
-    "textErrorB": "Name must be more than 4 character.",
-    "textErrorC": "Name must be less than 6 characters.",
+    "textErrorB": "Name must be more than 1 character.",
+    "textErrorC": "Name must be less than 10 characters.",
     "textErrorD": "Name must be more than 1 character.",
 
     "textCallDate": "Date",

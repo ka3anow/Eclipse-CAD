@@ -25,9 +25,9 @@
 import { useAppStore, useTranslation } from "@/stores/app";
 import type { Codes } from "@/types/types";
 const store = useAppStore();
-const tenCodes: any = ref(store.tenCodes);
 const translate: any = useTranslation().translate;
-const searchQuery = ref(store.tenCodesSearchQuery)
+const tenCodes = ref<Codes[]>(store.tenCodes);
+const searchQuery = ref<string>(store.tenCodesSearchQuery)
 
 function changeSearchQuery() {
     store.changeCodesSearchQuery(searchQuery.value);

@@ -39,9 +39,9 @@ import type { User } from '@/types/types';
 
 const store = useAppStore();
 const translate: any = useTranslation().translate
-const residentList: any = ref(store.residentList);
+const residentList = ref<User[]>(store.residentList);
+const searchQuery = ref<string>(store.residentSearchQuery);
 const { selectUserById } = useCommon();
-const searchQuery = ref(store.residentSearchQuery)
 
 function getStatus(number: number) {
     const status = translate.statusList[number];

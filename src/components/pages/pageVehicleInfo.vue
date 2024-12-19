@@ -68,13 +68,12 @@
 
 <script setup lang="ts">
 import { useAppStore, useTranslation } from "@/stores/app";
-import { VehicleType } from "@/types/types";
+import { VehicleType, type Vehicle } from "@/types/types";
 import { useCommon } from "@/composables/useCommon";
 const store = useAppStore();
 const translate: any = useTranslation().translate
-const vehicle: any = store.activeVehicle;
-const userList: any = store.residentList;
 const statusList = translate.vehStatusList;
+const vehicle: Vehicle = store.activeVehicle;
 const selectedStatus = ref(getStatus(vehicle.status));
 const { selectUserById, getUserById } = useCommon();
 

@@ -39,9 +39,9 @@ import { useCommon } from "@/composables/useCommon"
 import type { Weapon } from "@/types/types";
 const store = useAppStore();
 const translate: any = useTranslation().translate
-const weaponList: any = ref(store.weaponsList);
+const weaponList = ref<Weapon[]>(store.weaponsList);
+const searchQuery = ref<string>(store.weaponSearchQuery);
 const { getOwnerById, selectWeaponById } = useCommon();
-const searchQuery = ref(store.weaponSearchQuery)
 
 function getStatus(number: number) {
     const status = translate.weaponStatusList[number];

@@ -39,8 +39,7 @@ import type { Vehicle } from "@/types/types";
 
 const store = useAppStore();
 const translate: any = useTranslation().translate
-const vehiclesList: any = ref(store.vehiclesList);
-const userList: any = store.residentList;
+const vehiclesList = ref<Vehicle[]>(store.vehiclesList);
 const {selectVehicleById} = useCommon();
 const searchQuery = ref(store.vehicleSearchQuery)
 const { getOwnerById } = useCommon();

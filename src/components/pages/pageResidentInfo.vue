@@ -143,7 +143,7 @@
 
 <script setup lang="ts">
 import { useAppStore, useTranslation } from "@/stores/app";
-import type { PoliceUserData, User } from "@/types/types";
+import type { PoliceUserData, Ticket, User, Vehicle, Weapon } from "@/types/types";
 import { useCommon } from "@/composables/useCommon"
 import ModalWindow from '@/components/modals/modal.vue';
 import ModalNewTicket from '@/components/modals/modalNewTicket.vue';
@@ -152,10 +152,11 @@ const store = useAppStore();
 const translate: any = useTranslation().translate
 const user: User = store.activeUser;
 const policeUser: User = store.user;
-const policeUserData: PoliceUserData = policeUser?.police || {rank:0, onDuty: 0, onPanic: false, callsign:"no data"};
-const userVehicleList: any = ref(store.vehiclesList);
-const userWeaponsList: any = ref(store.weaponsList);
-const userTicketList: any = ref(store.ticketList);
+const defaultPoliceData = {rank:0, onDuty: 0, onPanic: false, callsign:"no data"}
+const policeUserData: PoliceUserData = policeUser?.police || defaultPoliceData;
+const userVehicleList = ref<Vehicle[]>(store.vehiclesList);
+const userWeaponsList = ref<Weapon[]>(store.weaponsList);
+const userTicketList = ref<Ticket[]>(store.ticketList);
 const statusList = translate.statusList;
 const vehStatusList = translate.vehStatusList;
 const selectedStatus = ref(getStatus(user.status));
@@ -188,15 +189,15 @@ function getWeaponStatus(number: number) {
 }
 
 const filteredVehicles = computed(() => {
-    return userVehicleList.value.filter((vehicle: { owner: number; }) => vehicle.owner === user.id);
+    return userVehicleList.value.filter((vehicle: Vehicle) => vehicle.owner === user.id);
 });
 
 const filteredWeapons = computed(() => {
-    return userWeaponsList.value.filter((weapon: { owner: number; }) => weapon.owner === user.id);
+    return userWeaponsList.value.filter((weapon: Weapon) => weapon.owner === user.id);
 });
 
 const filteredTickets = computed(() => {
-    return userTicketList.value.filter((ticket: { owner: number; }) => ticket.owner === user.id);
+    return userTicketList.value.filter((ticket: Ticket) => ticket.owner === user.id);
 });
 
 function changeUserStatus() {
@@ -207,7 +208,7 @@ function changeUserStatus() {
 const showModal = ref(false);
 let activeTicket = -1;
 
-const showDeleteModal = (id:number) => {
+const showDeleteModal = (id: number) => {
     activeTicket = id;
     showModal.value = true;
 }

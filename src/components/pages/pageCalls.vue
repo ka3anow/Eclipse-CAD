@@ -44,9 +44,9 @@ import type { Calls } from '@/types/types';
 const store = useAppStore();
 const playerData = store.user;
 const translate: any = useTranslation().translate
-const callList: any = ref(store.policeCalls);
+const callList = ref<Calls[]>(store.policeCalls);
+const searchQuery = ref<string>(store.callSearchQuery);
 const { getPoliceUserById, selectCallById, convertTime, convertDate } = useCommon();
-const searchQuery = ref(store.callSearchQuery)
 
 function getCallStatus(number: number) {
     const status = translate.callStatusList[number];

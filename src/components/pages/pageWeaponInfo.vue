@@ -56,10 +56,7 @@
                                 </template>
                             </v-select>
                         </div>
-                        
-                    </div>
-
-                    
+                    </div>  
                 </v-card>
             </v-col>
         </v-row>
@@ -71,13 +68,12 @@
 import { useAppStore, useTranslation } from "@/stores/app";
 import type { Weapon } from "@/types/types";
 import { useCommon } from "@/composables/useCommon"
-import { tr } from "vuetify/locale";
 
 const store = useAppStore();
 const translate: any = useTranslation().translate
 const weapon: Weapon = store.activeWeapon;
 const statusList = translate.weaponStatusList;
-const selectedStatus = ref(getStatus(weapon.status));
+const selectedStatus = ref<number>(getStatus(weapon.status));
 const {getUserById, selectUserById} = useCommon();
 
 function goBack() {

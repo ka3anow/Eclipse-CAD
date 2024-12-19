@@ -34,14 +34,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useTranslation, useAppStore } from "@/stores/app";
-import type { Ticket } from '@/types/types';
+import type { Law, Ticket, User } from '@/types/types';
 import { useCommon } from "@/composables/useCommon"
 const translate: any = useTranslation().translate
 const store = useAppStore();
 const { getUserById, convertTime, convertDate, getLawById} = useCommon();
-const policeUser = store.user;
-const activeUser = store.activeUser;
-const lawList = store.stateLaws;
+const policeUser: User = store.user;
+const activeUser: User = store.activeUser;
+const lawList: Law[] = store.stateLaws;
 
 const emit = defineEmits(['update:modelValue', 'confirmed']);
 const props = defineProps({

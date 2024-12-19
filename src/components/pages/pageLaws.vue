@@ -34,9 +34,9 @@
 import { useAppStore, useTranslation } from "@/stores/app";
 import type { Law } from "@/types/types";
 const store = useAppStore();
-const stateLaws = ref(store.stateLaws);
 const translate: any = useTranslation().translate;
-const searchQuery = ref(store.lawSearchQuery)
+const stateLaws = ref<Law[]>(store.stateLaws);
+const searchQuery = ref<string>(store.lawSearchQuery)
 
 function changeSearchQuery() {
     store.changeLawSearchQuery(searchQuery.value);

@@ -9,11 +9,11 @@
                     <v-card class="main-card" elevation="8">
                         <div class="shift-list">
                             <div class="shift-item active" v-for="user in filteredShiftList" :key="user.id + 'sw'" @click="selectUserById(user.id)">
-                                <span v-if="user.police.onPanic == false" :class="'onduty duty_'+ user.police.onDuty"></span>
+                                <span v-if="user.police?.onPanic == false" :class="'onduty duty_'+ user.police.onDuty"></span>
                                 <span v-else class="onduty panic"></span>
 
-                                <span class="text">{{ user.name }} {{ user.surname }} ({{ user.police.callsign }})</span>
-                                <span :class="'icon rank-' + user.police.rank"></span>
+                                <span class="text">{{ user.name }} {{ user.surname }} ({{ user.police?.callsign }})</span>
+                                <span :class="'icon rank-' + user.police?.rank"></span>
                             </div>
                         </div>
                     </v-card>
@@ -79,26 +79,27 @@ import { useCommon } from "@/composables/useCommon";
 import { useAppStore, useTranslation } from "@/stores/app";
 import ModalWindow from '@/components/modals/modal.vue';
 import ModalNewAdam from '@/components/modals/modalNewAdam.vue';
+import type { Patrol, User, Vehicle } from "@/types/types";
 
 const store = useAppStore();
 const user = store.user;
 const translate: any = useTranslation().translate
-const shiftList: any = ref(store.shiftList);
-const patrolList: any = ref(store.patrolList);
-const residentList: any = ref(store.residentList);
-const vehiclesList: any = ref(store.vehiclesList);
+const shiftList = ref<User[]>(store.shiftList);
+const patrolList = ref<Patrol[]>(store.patrolList);
+const residentList = ref<User[]>(store.residentList);
+const vehiclesList = ref<Vehicle[]>(store.vehiclesList);
 const { selectUserById, selectVehicleById, getPoliceUserById } = useCommon();
 
 const filteredUsers = computed(() => {
-    return residentList.value.filter((user: { status: number; }) => user.status === 2);
+    return residentList.value.filter((user: User) => user.status === 2);
 });
 
 const filteredVehicles = computed(() => {
-    return vehiclesList.value.filter((user: { status: number; }) => user.status === 2);
+    return vehiclesList.value.filter((vehicle: Vehicle) => vehicle.status === 2);
 });
 
 const filteredShiftList = computed(() => {
-    return shiftList.value.filter((user: { police: { onDuty: number; }; }) => user.police.onDuty != 3);
+    return shiftList.value.filter((user:User) => user.police?.onDuty != 3);
 });
 
 function isUserInAdam(member: number[]) {

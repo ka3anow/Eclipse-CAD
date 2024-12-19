@@ -53,13 +53,14 @@ import { useAppStore, useTranslation } from "@/stores/app";
 import type { PoliceUserData, Ticket } from "@/types/types";
 import ModalWindow from '@/components/modals/modal.vue';
 import { useCommon } from "@/composables/useCommon"
-const { selectVehicleById, selectWeaponById, getUserById, getOwnerById, convertTime, convertDate, getLawById, getWeaponSerial } = useCommon();
+const { getOwnerById, convertTime, convertDate, getLawById} = useCommon();
 const store = useAppStore();
 const translate: any = useTranslation().translate
 const user = store.user;
-const policeUserData: PoliceUserData = user?.police || {rank:0, onDuty: 0, onPanic: false, callsign:"no data"};
-const ticketList = ref(store.ticketList);
-const searchQuery = ref(store.ticketSearchQuery)
+const policeDefaultUserData = {rank:0, onDuty: 0, onPanic: false, callsign:"no data"}
+const policeUserData: PoliceUserData = user?.police || policeDefaultUserData;
+const ticketList = ref<Ticket[]>(store.ticketList);
+const searchQuery = ref<string>(store.ticketSearchQuery)
 
 function getTicketStatus(number :number) {
     const status = translate.ticketStatusList[number];
@@ -80,9 +81,11 @@ const filteredTickets = computed(() => {
         mergedString += convertTime(ticket.date);
         mergedString += convertDate(ticket.date);
         mergedString += getOwnerById(ticket.owner).toLowerCase();
+
         const law = getLawById(ticket.lawId);
         if (law) {
-            mergedString += law.name.toLowerCase()
+            mergedString += law.name.toLowerCase();
+            mergedString += law.number.toLowerCase();
         }
         return (
             mergedString.includes(query)
