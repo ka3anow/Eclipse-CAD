@@ -107,7 +107,7 @@ function isUserInAdam(member: number[]) {
 }
 
 function joinPlayerToAdam(playerId: number, adamId: number) {
-    store.joinPlayerToAdamById(playerId, adamId);
+    store.joinPlayerToPatrolById(playerId, adamId);
 }
 
 function leavePlayerFromAdam(playerId: number, adamId: number) {

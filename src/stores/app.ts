@@ -88,10 +88,8 @@ export const useAppStore = defineStore('app', {
         changeDutyStatus(status: number) {
             if (this.user.police) {
                 this.user.police.onDuty = status;
-
-                // test
-                const player: any = this.shiftList.find(user => user.id == this.user.id);
-                if (player) {
+                const player: User | undefined = this.shiftList.find((user: User) => user.id == this.user.id);
+                if (player && player.police) {
                     player.police.onDuty = status;
                 }
             }
@@ -99,24 +97,25 @@ export const useAppStore = defineStore('app', {
         changePanicStatus(status: boolean) {
             if (this.user.police) {
                 this.user.police.onPanic = status;
-
-                const player: any = this.shiftList.find(user => user.id == this.user.id);
-                if (player) {
+                const player: User | undefined = this.shiftList.find((user: User) => user.id == this.user.id);
+                if (player && player.police) {
                     player.police.onPanic = !this.user.police.onPanic;
                 }
             }
         },
         joinPlayerToCall(playerId: number, callId: number) {
-            const Call: any = this.policeCalls.find(item => item.id === callId);
-            Call.units.push(playerId);
+            const Call: Calls | undefined = this.policeCalls.find((item: Calls) => item.id === callId);
+            if (Call) {
+                Call.units.push(playerId);
+            }
         },
         leavePlayerFromCall(playerId: number, callId: number) {
-            const Call: any = this.policeCalls.find(item => item.id === callId);
-            const index = Call?.units.indexOf(playerId);
-            if (index != -1) {
+            const Call: Calls | undefined = this.policeCalls.find((item: Calls) => item.id === callId);
+            const index: number | undefined = Call?.units.indexOf(playerId);
+            if (index != -1 && Call && index) {
                 Call.units.splice(index, 1);
             } else {
-                console.log('error, player not found in Call')
+                console.log('error, player not found in Call');
             }
         },
         leavePlayerFromAllAdams(playerId: number) {
@@ -127,23 +126,29 @@ export const useAppStore = defineStore('app', {
                 }
             });
         },
-        joinPlayerToAdamById(playerId: number, adamId: number) {
+        joinPlayerToPatrolById(playerId: number, adamId: number) {
             this.leavePlayerFromAllAdams(playerId);
-            const Adam: any = this.patrolList.find(item => item.id === adamId);
-            Adam.members.push(playerId);
+            const patrol: Patrol | undefined = this.patrolList.find((item: Patrol) => item.id === adamId);
+            if (patrol) {
+                patrol.members.push(playerId);
+            } else {
+                console.log('error, player not found in Patrol');
+            }
         },
         leavePlayerFromAdamById(playerId: number, adamId: number) {
-            const Adam: any = this.patrolList.find(item => item.id === adamId);
-            const index = Adam?.members.indexOf(playerId);
-            if (index != -1) {
-                Adam.members.splice(index, 1);
+            const patrol: Patrol | undefined = this.patrolList.find((item: Patrol) => item.id === adamId);
+            const index: number | undefined = patrol?.members.indexOf(playerId);
+            if (index != -1 && patrol && index) {
+                patrol.members.splice(index, 1);
             } else {
-                console.log('error, player not found in Adam')
+                console.log('error, player not found in Patrol');
             }
         },
         removeAdamById(adamId: number) {
-            const index: any = this.patrolList.findIndex(item => item.id === adamId);
-            this.patrolList.splice(index, 1);
+            const index: number = this.patrolList.findIndex((item: Patrol) => item.id === adamId);
+            if (index != -1) {
+                this.patrolList.splice(index, 1);
+            }
         },
         createNewAdam(adam: Patrol) {
             this.patrolList.push(adam);
@@ -152,8 +157,10 @@ export const useAppStore = defineStore('app', {
             this.ticketList.push(ticket);
         },
         removeTicketById(ticketId: number) {
-            const index: any = this.ticketList.findIndex(item => item.id === ticketId);
-            this.ticketList.splice(index, 1);
+            const index: number = this.ticketList.findIndex(item => item.id === ticketId);
+            if (index != -1) {
+                this.ticketList.splice(index, 1);
+            }
         },
         changeCallStatus(status: number) {
             this.activeCall.status = status;
