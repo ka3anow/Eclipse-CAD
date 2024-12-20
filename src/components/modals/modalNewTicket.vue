@@ -83,7 +83,6 @@ const confirm = () => {
     }
     activeLawId.value = -1;
     store.createNewTicket(newTicket);
-    emit('confirmed');
     close();
 };
 

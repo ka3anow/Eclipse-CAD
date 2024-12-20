@@ -57,6 +57,10 @@
                     <page-call-info v-if="store.subpage == 40" />
                 </transition>
 
+                <transition name="list">
+                    <page-management-edit v-if="store.subpage == 80" />
+                </transition>
+
             </div>
         </div>
     </div>

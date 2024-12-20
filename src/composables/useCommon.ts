@@ -12,21 +12,28 @@ export function useCommon() {
     const translate: any = useTranslation().translate;
 
     function getOwnerById(id: number) {
-        const owner = userList.find((user: { id: number; }) => user.id == id)
+        const owner = userList.find((user: User) => user.id == id)
         return owner? `${owner.name} ${owner.surname}` : translate.textNotFound;
     }
-
     
     function selectUserById(id: number) {
-        const foundUser = userList.find((user : {id: number}) => user.id == id);
+        const foundUser = userList.find((user : User) => user.id == id);
         if (foundUser) {
             store.activeUser = foundUser;
             store.changeSubPage(10);
         }
     }
 
+    function editUserById(id: number) {
+        const foundUser = userList.find((user : User) => user.id == id);
+        if (foundUser) {
+            store.activeUser = foundUser;
+            store.changeSubPage(80);
+        }
+    }
+
     function selectVehicleById(id: number) {
-        const foundVehicle = vehiclesList.find((veh : {id: number}) => veh.id == id);
+        const foundVehicle = vehiclesList.find((veh : Vehicle) => veh.id == id);
         if (foundVehicle) {
             store.activeVehicle = foundVehicle;
             store.changeSubPage(20);
@@ -34,7 +41,7 @@ export function useCommon() {
     }
 
     function selectWeaponById(id: number) {
-        const foundWeapon = weaponsList.find((weapon: {id : number}) => weapon.id == id);
+        const foundWeapon = weaponsList.find((weapon: Weapon) => weapon.id == id);
         if (foundWeapon) {
             store.activeWeapon = foundWeapon;
             store.changeSubPage(30);
@@ -42,7 +49,7 @@ export function useCommon() {
     }
 
     function selectCallById(id: number) {
-        const foundCall = callList.find((call: {id:number}) => call.id == id);
+        const foundCall = callList.find((call: Calls) => call.id == id);
         if (foundCall) {
             store.activeCall = foundCall;
             store.changeSubPage(40); 
@@ -50,17 +57,17 @@ export function useCommon() {
     }
 
     const getUserById = (userId: number): User | null => {
-        const owner = userList.find((item: { id: number; }) => item.id == userId)
+        const owner = userList.find((item: User) => item.id == userId)
         return owner || null;
     }
 
     const getPoliceUserById = (userId: number): User | null => {
-        const owner = policeList.find((item: { id: number; }) => item.id == userId)
+        const owner = policeList.find((item: User) => item.id == userId)
         return owner || null;
     }
 
     const getLawById = (id:number): Law | null  => {
-        const law = stateLaws.find((item: { id: number; }) => item.id == id)
+        const law = stateLaws.find((item: Law) => item.id == id)
         return law || null;
     }
 
@@ -95,7 +102,8 @@ export function useCommon() {
         convertTime,
         convertDate,
         getLawById,
-        getWeaponSerial
+        getWeaponSerial,
+        editUserById
     }
 }
 

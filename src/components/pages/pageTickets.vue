@@ -43,7 +43,7 @@
         <ModalWindow
             :title="translate.textAreYouSure"
             v-model="showModal"
-            @confirmed="handleConfirm">
+        >
         </ModalWindow>
     </div>
 </template>
@@ -101,10 +101,5 @@ const showDeleteModal = (id:number) => {
     activeTicket = id;
     showModal.value = true;
 }
-
-const handleConfirm = () => {
-    if (activeTicket != -1)
-    store.removeTicketById(activeTicket);
-};
 
 </script>

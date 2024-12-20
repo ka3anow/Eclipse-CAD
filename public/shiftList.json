@@ -10,8 +10,8 @@
         "balance": 500,
         "status": 0,
         "police": {
-            "rank": 4,
-            "onDuty": 0,
+            "rank": 18,
+            "onDuty": 1,
             "callsign": "L-01",
             "onPanic": false
         }
@@ -27,7 +27,7 @@
         "status": 1,
         "police": {
             "rank": 13,
-            "onDuty": 1,
+            "onDuty": 2,
             "callsign": "L-02",
             "onPanic": false
         }
@@ -43,8 +43,24 @@
         "status": 1,
         "police": {
             "rank": 7,
-            "onDuty": 2,
-            "callsign": "K-02",
+            "onDuty": 3,
+            "callsign": "L-03",
+            "onPanic": false
+        }
+    },{
+        "license": true,
+        "name": "Jack",
+        "surname": "Hartman",
+        "age": 52,
+        "id": 863,
+        "gender": true,
+        "phone": "555-9913",
+        "balance": 80000,
+        "status": 1,
+        "police": {
+            "rank": 13,
+            "onDuty": 0,
+            "callsign": "K-01",
             "onPanic": false
         }
     }

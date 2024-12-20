@@ -21,6 +21,7 @@ declare module 'vue' {
     PageLaws: typeof import('./components/pages/pageLaws.vue')['default']
     PageMainpanel: typeof import('./components/pages/pageMainpanel.vue')['default']
     PageManagement: typeof import('./components/pages/pageManagement.vue')['default']
+    PageManagementEdit: typeof import('./components/pages/pageManagementEdit.vue')['default']
     PageResidentbase: typeof import('./components/pages/pageResidentbase.vue')['default']
     PageResidentInfo: typeof import('./components/pages/pageResidentInfo.vue')['default']
     PageTenCodes: typeof import('./components/pages/pageTenCodes.vue')['default']

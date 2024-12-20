@@ -82,7 +82,7 @@ import ModalNewAdam from '@/components/modals/modalNewAdam.vue';
 import type { Patrol, User, Vehicle } from "@/types/types";
 
 const store = useAppStore();
-const user = store.user;
+const user: User = store.user;
 const translate: any = useTranslation().translate
 const shiftList = ref<User[]>(store.shiftList);
 const patrolList = ref<Patrol[]>(store.patrolList);
@@ -99,7 +99,7 @@ const filteredVehicles = computed(() => {
 });
 
 const filteredShiftList = computed(() => {
-    return shiftList.value.filter((user:User) => user.police?.onDuty != 3);
+    return shiftList.value.filter((user:User) => user.police?.onDuty != 0);
 });
 
 function isUserInAdam(member: number[]) {

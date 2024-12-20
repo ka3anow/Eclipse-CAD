@@ -13,6 +13,7 @@ translation.value = await response.json();
 export const useAppStore = defineStore('app', {
     state: (): AppState => ({
         data: "someData",
+        playerid: 90,
         user: {
             name: 'Jessie',
             surname: 'Pinkman',
@@ -56,6 +57,7 @@ export const useAppStore = defineStore('app', {
         lawSearchQuery: "",
         tenCodesSearchQuery: "",
         callSearchQuery: "",
+        managementSearchQuery: "",
         loading: true,
         error: ""
     }),
@@ -83,6 +85,12 @@ export const useAppStore = defineStore('app', {
             const lastPage = this.lastSubPage.pop();
             if (lastPage !== undefined) {
                 this.subpage = lastPage;
+            }
+        },
+        changeActiveUser(id: number) {
+            const user: User | undefined = this.residentList.find((user: User) => user.id == id);
+            if (user) {
+                this.activeUser = user;
             }
         },
         changeDutyStatus(status: number) {
@@ -195,6 +203,23 @@ export const useAppStore = defineStore('app', {
         changeCodesSearchQuery(query: string) {
             this.tenCodesSearchQuery = query;
         },
+        changeManagementSearchQuery(query: string) {
+            this.managementSearchQuery = query;
+        },
+        changeActivePlayersRank(rank: number) {
+            const id = this.activeUser.id;
+            const player: User | undefined = this.shiftList.find((user: User) => user.id == id);
+            if (player && player.police) {
+                player.police.rank = rank;
+            }
+        },
+        changeActivePlayersCallsign(callsign: string) {
+            const id = this.activeUser.id;
+            const player: User | undefined = this.shiftList.find((user: User) => user.id == id);
+            if (player && player.police) {
+                player.police.callsign = callsign;
+            }
+        },
         async fetchAllData() {
             this.loading = true;
             this.error = null;
@@ -231,7 +256,13 @@ export const useAppStore = defineStore('app', {
         },
     },
     getters: {
-        
+        getUser(): User | undefined {
+            const player: User | undefined = this.shiftList.find((user: User) => user.id == this.playerid);
+            if (player) {
+                return player
+            }
+            
+        }
     },
 });
 

@@ -1,6 +1,7 @@
 
 export interface AppState {
     data: string;
+    playerid: number,
     user: User;
     count: number;
     page: number;
@@ -27,7 +28,8 @@ export interface AppState {
     weaponSearchQuery: string,
     ticketSearchQuery: string,
     lawSearchQuery: string,
-    tenCodesSearchQuery: string
+    tenCodesSearchQuery: string,
+    managementSearchQuery: string
 }
 
 export interface User {

@@ -2,7 +2,7 @@
     <div class="left-block">
         <div class="player-info">
             <div class="status" :class="'duty_'+ policeUserData.onDuty"></div>
-            <h5>{{ playerData.name }} {{ playerData.surname }}</h5>
+            <h5>{{ playerData?.name }} {{ playerData?.surname }}</h5>
             <h6>{{ getPlayerRank(policeUserData.rank) }} ({{ policeUserData.callsign }})</h6>
 
 
@@ -18,6 +18,9 @@
                 :class="{ active: isActive === index  || (index === 1 && isActive === 40) || (index === 2 && isActive === 10) || (index === 3 && isActive === 20) || (index === 4 && isActive === 30)}"
                 >
                 {{ translate[button] }}
+            </v-btn>
+            <v-btn v-if="policeUserData.rank >=17" variant="text" block class="text-white" elevation="12" @click="changeSubpage(8)" :class="{active: (isActive === 8 || isActive === 80)}">
+                {{ translate.buttonManagement }}
             </v-btn>
         </div>
 
@@ -51,11 +54,11 @@ import type { PoliceUserData } from "@/types/types";
 import { ref, watch } from "vue";
 
 const store = useAppStore();
-const playerData = store.user;
+const playerData = store.getUser;
 const policeUserData: PoliceUserData = playerData?.police || {rank:0, onDuty: 0, onPanic: false, callsign:"no data"};
 const translate: any = useTranslation().translate;
 
-const buttons = ['buttonMainPanel', 'buttonCalls', 'buttonResidents', 'buttonVehicles', 'buttonWeapons', 'buttonTickets', 'buttonLaws', 'buttonCodes', 'buttonManagement'];
+const buttons = ['buttonMainPanel', 'buttonCalls', 'buttonResidents', 'buttonVehicles', 'buttonWeapons', 'buttonTickets', 'buttonLaws', 'buttonCodes'];
 const isActive = ref(store.subpage)
 
 function changeSubpage( number: number ) {
